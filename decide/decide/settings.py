@@ -70,7 +70,7 @@ MODULES = [
     'voting',
 ]
 
-BASEURL = 'http://heroku-meet-travis.herokuapp.com'
+
 
 APIS = {
     'authentication': BASEURL,
@@ -178,6 +178,7 @@ KEYBITS = 256
 ALLOWED_VERSIONS = ['v1', 'v2']
 DEFAULT_VERSION = 'v1'
 
+BASEURL = 'https://pruebafinal3.herokuapp.com'
 try:
     from local_settings import *
 except ImportError:

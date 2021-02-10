@@ -1,28 +1,27 @@
 dist: xenial
-
 services:
-  - postgresql
+- postgresql
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - psql -U postgres -c "create user decide password 'decide'"
-  - psql -U postgres -c "create database test_decide owner decide"
-  - psql -U postgres -c "ALTER USER decide CREATEDB"
+- psql -U postgres -c "create user decide password 'decide'"
+- psql -U postgres -c "create database test_decide owner decide"
+- psql -U postgres -c "ALTER USER decide CREATEDB"
 language: python
 python:
-  - "3.6"
+- '3.6'
 install:
-  - pip install -r requirements.txt
-  - pip install codacy-coverage
+- pip install -r requirements.txt
+- pip install codacy-coverage
 script:
-  - cd decide
-  - cp travis_local_settings.py local_settings.py
-  - coverage run --branch --source=. ./manage.py test mixnet --keepdb
-  - coverage xml
-  - python-codacy-coverage -r coverage.xml
+- cd decide
+- cp travis_local_settings.py local_settings.py
+- coverage run --branch --source=. ./manage.py test mixnet --keepdb
+- coverage xml
+- python-codacy-coverage -r coverage.xml
 deploy:
   provider: heroku
-  app: egc-app-decide2-moimarram
+  app: pruebafinal3
   strategy: git
   api_key:
-     secure: QFzCcuDFx4WInddN5lZnqQF//2CtHfOR+1ZX6SwG3gFQpPUvP+CCdk/+o+FybTLFi1K4cfp3JstOa4xTt8X3PtD4Khtk4fKvUgVnUcRIhuVbUAnm/vp0JFbPUwSliQI0k5OCBD4O3dVKlaEOxwZ/Qzw0N3nEv/+j3cI6FGcm/ETZdI/cnsFQFfB8cX4QlXP2n+wk9qRWF9pG8QByhd0JQHjCLkYLGg4gSsDHb5FtggNyrdCblpLRX6bC9vYKUMvq3v5/t17BppI4I/kw0XkSMQiE9QVCBvL7N3O1H6WEUNm+s4OQBlQeMRHGsyjTt1ANBlRqD6v6a6L8ama4JSqoqeGmWGMg+3bRQi9Sq8KQ4O6pU4kbAyuID47SeVJvo/5N0nipx/h4LuqQ8bzpNqyvONnki9Ot9l0KfmQPmN2Sa9jePsgd8FpjGwfXNvjjpCZ+7eimUT9T0R2cXDkJxsVL3QJpgTvJpUS0IFeXsYsQIRiVK2SD46c3EVr5qbRMCoFaaGEEI6gtbGy8C4R0hu9/lwi+UkqhEdGoDusWzfWLrLJ2qt83pV4CLzMnOYQWte22evwmtniMpGFoZYLNm1uhI6az0kiyOrmoyx2hX1Fp1DbC+HGLoPpWqjqF20evRjHFOa+NtMZigtyewi2KTx2vgJPL0jRnzEwbfu+6FUMaYLE=
+    secure: jxnF+ratPpA5AuADUFiUSXcJLYCBIPW9YfcY8s5cOqPiaruDlbBIVcIGSPwXCFiDECtGnx33FwpLXO4m9ZfkeL/V+4QsC0i8FZe/Dxp5sie7Tg4xuUvBx2JqKVM3zretgNB1QYs93FhWJgTtCfhLiTxflmPIdwmMAs9rPwCOy/0NlEDb5V5PseIeXBn5C+gItuKPI8f1IOy4mifmL29q9tKLMqdUOVT98stkyeM5ea0ls3pz5zay56zZ2iU59ToO3MRqkrRF0hssQohxFMSRxQFB/FU4c5pgVflTXaSPxvQ9+6K3uPAb3YW/rdkZSpMdXAWooXsaUKHOR1Az5nqFpnHW5n048bgsPy0whz7TIDBbbwku6207sxN8upvk3QLCaxoqrfOnYrUuiSXgxpucwElEmUExW/kqFU25RTXOABjmzlwbTKZuy7bxkK4R619yu9fVsgOdWqCj56evwTCQOO5rxt1Z6QP2Cu00nOk0zZywJSW7uP1Wbl81dWWrJqk5lok4hiRwWqQamwhNT7q3UEiPapGrfEH0R3FVo8TGkjPWEeOPAYe2D3tGpK5zdGzX7JajIK1C8GYY2NkIBfzMbwycp52e0nEbd+0mXuIt+vt6GK4aAlJTXghAW8+y4Pyb9nRNUfO8opzPwNdZfHY930Xy9Vjy/jt8v6UVOSjcq6s=
